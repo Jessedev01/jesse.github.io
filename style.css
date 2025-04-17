@@ -1,53 +1,79 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-  background: #f0f2f5;
-  font-family: 'Arial', sans-serif;
+  background: #0d1117;
+  font-family: 'Roboto', sans-serif;
+  color: #c9d1d9;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
 .container {
-  text-align: center;
-  background: white;
+  background-color: #161b22;
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  text-align: center;
   width: 90%;
   max-width: 400px;
+  animation: fadeIn 1s ease-out;
 }
 
 .profile-pic {
-  width: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   margin-bottom: 1rem;
+  border: 2px solid #58a6ff;
+  animation: scaleIn 0.8s ease-out;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #58a6ff;
+  margin: 0.5rem 0;
 }
 
 .title {
   font-weight: bold;
-  color: #333;
-  margin: 0.5rem 0;
+  color: #8b949e;
+  margin-bottom: 1rem;
 }
 
 .bio {
   font-size: 1rem;
-  color: #555;
+  color: #c9d1d9;
   margin-bottom: 1.5rem;
 }
 
 .links a {
   display: block;
-  margin: 0.5rem 0;
+  margin: 0.5rem auto;
   text-decoration: none;
-  color: white;
-  background: #0077cc;
-  padding: 0.5rem 1rem;
+  color: #fff;
+  background: #238636;
+  padding: 0.6rem 1rem;
   border-radius: 8px;
-  transition: 0.3s;
+  width: 80%;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .links a:hover {
-  background: #005fa3;
+  background: #2ea043;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
