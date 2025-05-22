@@ -83,7 +83,7 @@ nav {
 }
 
 .project-card {
-  background: #f1f1f1;
+  background: #0a0304;
   border-radius: 12px;
   padding: 1.5rem;
   width: 250px;
@@ -112,8 +112,8 @@ nav {
 }
 
 .contact-form button {
-  background: #0072ff;
-  color: #fff;
+  background: #0a0304;
+  color: #fffff;
   border: none;
   padding: 0.8rem;
   border-radius: 8px;
