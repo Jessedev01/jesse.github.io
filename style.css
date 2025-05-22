@@ -135,3 +135,13 @@ nav {
     width: 100%;
   }
 }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  flex-basis: 30%; 
+  margin: 10px;
+}
