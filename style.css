@@ -22,14 +22,14 @@ h1 {
 
 .subtitle {
   font-size: 1.5rem;
-  color: #555;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
 .description {
   max-width: 500px;
   margin-bottom: 2rem;
-  color: #444;
+  color: #ffffff;
 }
 
 .social-links {
@@ -57,13 +57,13 @@ nav {
 .nav-link {
   margin: 0 1rem;
   text-decoration: none;
-  color: #0072ff;
+  color: #ffffff;
   font-weight: 500;
   transition: color 0.2s;
 }
 
 .nav-link:hover {
-  color: #0056b3;
+  color: #ffffff;
 }
 
 .section {
