@@ -145,3 +145,11 @@ nav {
   flex-basis: 30%; 
   margin: 10px;
 }
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+  }
+  .item {
+    width: 100%;
+  }
+}
