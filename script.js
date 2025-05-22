@@ -16,3 +16,10 @@ function enviarFormulario(event) {
   document.getElementById('mensagem-enviada').style.display = 'block';
   return false;
 }
+const images = document.querySelectorAll('img[data-src]');
+
+images.forEach(img => {
+  img.addEventListener('load', () => {
+    img.src = img.dataset.src;
+  });
+});
