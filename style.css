@@ -1,155 +1,261 @@
-body {
+/* =================================================================
+   Estilos Globais e Tipografia
+   ================================================================= */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background: #544D2C;
-  color: #ffffff;
+  padding: 0;
 }
 
-.centered {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
 }
 
 h1 {
   font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
-  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #2c3e50;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =================================================================
+   Foto de Perfil Fixa (Seu código)
+   ================================================================= */
+.profile-pic-fixed {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  border: 3px solid #fff;
+  z-index: 1000;
+  background: #eee;
+}
+
+/* =================================================================
+   Seção Principal (Hero)
+   ================================================================= */
+main.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh; /* Ocupa quase a tela inteira */
+  text-align: center;
+  padding: 2rem;
 }
 
 .subtitle {
   font-size: 1.5rem;
-  color: #ffffff;
+  font-weight: 300;
+  color: #555;
   margin-bottom: 1.5rem;
 }
 
 .description {
-  max-width: 500px;
+  max-width: 600px;
+  font-size: 1.1rem;
+  color: #444;
   margin-bottom: 2rem;
-  color: #ffffff;
 }
 
+/* =================================================================
+   Links Sociais e Navegação
+   ================================================================= */
 .social-links {
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+  gap: 1.5rem; /* Espaçamento entre os ícones */
   margin-bottom: 2rem;
 }
 
 .social-links img {
   width: 32px;
   height: 32px;
-  filter: grayscale(1);
-  transition: filter 0.2s;
+  transition: transform 0.2s ease-in-out;
 }
 
 .social-links a:hover img {
-  filter: grayscale(0);
+  transform: scale(1.15); /* Efeito de zoom no hover */
 }
 
 nav {
-  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .nav-link {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #ffffff;
+  font-size: 1rem;
   font-weight: 500;
-  transition: color 0.2s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  background-color: #e6f2ff;
+  text-decoration: none;
 }
 
+/* =================================================================
+   Seções (Projetos, Contato)
+   ================================================================= */
 .section {
-  padding: 60px 20px 40px 20px;
-  background: #fff;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto; /* Centraliza o conteúdo da seção */
 }
 
+/* Alterna a cor de fundo para quebrar a página */
+#projetos {
+  background-color: #ffffff;
+}
+
+/* =================================================================
+   Cards de Projeto
+   ================================================================= */
 .projects {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha */
   justify-content: center;
+  gap: 1.5rem;
 }
 
 .project-card {
-  background: #0a0304;
-  border-radius: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   padding: 1.5rem;
-  width: 250px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-  text-align: left;
+  width: 300px; /* Largura fixa para cada card */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.project-card h3 {
-  margin-top: 0;
+.project-card:hover {
+  transform: translateY(-5px); /* Eleva o card no hover */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
+.project-card a {
+  font-weight: 600;
+}
+
+/* =================================================================
+   Formulário de Contato
+   ================================================================= */
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto; /* Centraliza o formulário */
 }
 
 .contact-form input,
-.contact-form textarea {
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+.contact-form textarea,
+.contact-form button {
+  font-family: inherit;
   font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
 }
 
 .contact-form button {
-  background: #0a0304;
-  color: #fffff;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .contact-form button:hover {
-  background: #0056b3;
+  background-color: #0056b3;
 }
 
+#mensagem-enviada {
+  text-align: center;
+  color: green;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* =================================================================
+   Responsividade (Ajustes para Celular)
+   ================================================================= */
 @media (max-width: 600px) {
-  .projects {
-    flex-direction: column;
-    gap: 1rem;
+  /* Seu código responsivo */
+  .profile-pic-fixed {
+    top: 10px;
+    left: 10px;
+    width: 48px;
+    height: 48px;
   }
+
+  /* Meus acréscimos */
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  /* Faz os cards ocuparem 100% da largura */
   .project-card {
     width: 100%;
   }
-}
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
-.item {
-  flex-basis: 30%; 
-  margin: 10px;
+  main.centered {
+    min-height: 80vh; /* Reduz um pouco no celular */
+  }
 }
-@media (max-width: 480px) {
-  .container {
-    flex-direction: column;
-  }
-  .item {
-    width: 100%;
-  }
 }
