@@ -58,8 +58,8 @@ a:hover {
   position: fixed;
   top: 24px;
   left: 24px;
-  width: 24px;
-  height: 24px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
@@ -260,3 +260,4 @@ nav {
 }
 
 }
+
