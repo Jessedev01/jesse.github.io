@@ -203,3 +203,46 @@ h2 {
 #historico-pedidos .total {
   font-weight: bold;
 }
+/* ... (mantenha todo o seu CSS anterior) ... */
+
+/* Estilos para o novo formulário de cadastro */
+#form-cadastro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Estilo do novo botão de adicionar */
+.btn-adicionar {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-adicionar:hover {
+  background-color: #0056b3;
+}
