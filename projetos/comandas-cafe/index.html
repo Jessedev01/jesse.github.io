@@ -12,28 +12,17 @@
     
     <div class="menu">
       <h2>Menu</h2>
-      <ul class="lista-menu">
-        <li class="menu-item" data-nome="Café Espresso" data-preco="5.00">
-          <span>Café Espresso</span>
-          <span class="preco">R$ 5,00</span>
-          <button class="add-btn">+</button>
-        </li>
-        <li class="menu-item" data-nome="Cappuccino" data-preco="8.50">
-          <span>Cappuccino</span>
-          <span class="preco">R$ 8,50</span>
-          <button class="add-btn">+</button>
-        </li>
-        <li class="menu-item" data-nome="Pão de Queijo" data-preco="4.00">
-          <span>Pão de Queijo</span>
-          <span class="preco">R$ 4,00</span>
-          <button class="add-btn">+</button>
-        </li>
-        <li class="menu-item" data-nome="Bolo de Fubá" data-preco="6.00">
-          <span>Bolo de Fubá</span>
-          <span class="preco">R$ 6,00</span>
-          <button class="add-btn">+</button>
-        </li>
-      </ul>
+      <form id="form-cadastro-item">
+        <div class="form-group">
+          <label for="item-nome">Nome do Item</label>
+          <input type="text" id="item-nome" placeholder="Ex: Croissant" required>
+        </div>
+        <div class="form-group">
+          <label for="item-preco">Preço (R$)</label>
+          <input type="number" id="item-preco" step="0.01" min="0.01" placeholder="Ex: 7.50" required>
+        </div>
+        <button type="submit" class="btn-adicionar">Adicionar ao Pedido</button>
+      </form>
     </div>
 
     <div class="comanda">
