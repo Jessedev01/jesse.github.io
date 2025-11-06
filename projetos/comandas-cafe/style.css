@@ -120,3 +120,86 @@ h2 {
 #reset-btn:hover {
   background-color: #c82333;
 }
+```css
+/* ... (todo o seu CSS anterior) ... */
+
+.form-group-pagamento {
+  margin-top: 15px;
+}
+.form-group-pagamento label {
+  margin-right: 10px;
+}
+.form-group-pagamento select {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#finalizar-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745; /* Verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#finalizar-btn:hover {
+  background-color: #218838;
+}
+
+/* Estilo do Dashboard */
+.dashboard {
+  /* O flex: 1 no .menu e .comanda faz com que isso vá para a próxima linha */
+  flex-basis: 100%; /* Ocupa 100% da largura */
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.faturamento-box {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.faturamento-box h3 {
+  margin: 0 0 10px 0;
+  color: #444;
+}
+.faturamento-box p {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#historico-pedidos {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+#historico-pedidos li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+#historico-pedidos li:last-child {
+  border-bottom: none;
+}
+#historico-pedidos .data {
+  font-size: 0.8em;
+  color: #777;
+}
+#historico-pedidos .total {
+  font-weight: bold;
+}
