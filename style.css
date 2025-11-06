@@ -538,5 +538,30 @@ nav {
     scroll-behavior: auto !important;
   }
 }
+/* --- Layout dos projetos lado a lado --- */
+.projects {
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar linha em telas menores */
+  justify-content: center;
+  gap: 30px; /* espaço entre os projetos */
+  margin-top: 20px;
+}
+
+.project-card {
+  flex: 1 1 45%; /* ocupa cerca de metade da linha */
+  box-sizing: border-box;
+  background: var(--card-bg, #fff);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Ajuste para telas pequenas (mobile) */
+@media (max-width: 800px) {
+  .project-card {
+    flex: 1 1 100%; /* empilha os projetos em telas menores */
+  }
+}
+
 
 
