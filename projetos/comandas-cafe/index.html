@@ -40,12 +40,40 @@
       <h2>Sua Comanda</h2>
       <ul id="lista-pedido">
         </ul>
-      <hr>
+     <hr>
       <div class="total-container">
         <strong>Total:</strong>
         <strong id="total-pedido">R$ 0,00</strong>
       </div>
+      
+      <div class="form-group-pagamento">
+        <label for="forma-pagamento">Forma de Pagamento:</label>
+        <select id="forma-pagamento">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="pix">Pix</option>
+          <option value="cartao">Cartão</option>
+        </select>
+      </div>
+      
+      <button id="finalizar-btn">Finalizar Pedido</button>
       <button id="reset-btn">Limpar Pedido</button>
+      
+    </div> <div class="dashboard">
+      <h2>Painel de Controle (Simulado)</h2>
+      
+      <div class="faturamento-box">
+        <h3>Faturamento do Dia</h3>
+        <p id="faturamento-dia">R$ 0,00</p>
+      </div>
+      
+      <div class="faturamento-box">
+        <h3>Faturamento do Mês</h3>
+        <p id="faturamento-mes">R$ 0,00</p>
+      </div>
+      
+      <h3>Histórico de Pedidos</h3>
+      <ul id="historico-pedidos">
+        </ul>
     </div>
 
   </div>
