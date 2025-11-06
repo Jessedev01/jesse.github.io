@@ -265,11 +265,24 @@ nav {
   color: var(--text-secondary);
 }
 
-/* Cards de Projeto */
+/*card project
+*/
+
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-lg);
+
+  /* Esta é a linha mais importante.
+    - Ela diz ao grid para "repetir" colunas.
+    - 'auto-fit' diz para criar quantas colunas couberem.
+    - 'minmax(500px, 1fr)' diz que cada coluna deve ter 
+      no MÍNIMO 500px e no MÁXIMO 1 fração do espaço (1fr).
+    
+    Resultado: Em ecrãs largos, ele cria 2 colunas. Em ecrãs 
+    pequenos (menos de 1000px), ele cria 1 coluna automaticamente.
+  */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  
+  gap: 20px; /* Um espaço de 20px entre os cards */
 }
 
 .project-card {
@@ -525,3 +538,4 @@ nav {
     scroll-behavior: auto !important;
   }
 }
+
