@@ -92,84 +92,82 @@
       </div>
     </div>
   </section>
+<section id="projetos" class="section animate-on-scroll">
+   <h2>Projetos</h2>
+   <div class="projects">         <article class="project-card">
+       <div class="project-content">
+         <h3>
+           <span class="coffee-icon-small">☕</span>
+           Projeto Comandas Cafeteria
+         </h3>
+         <p>
+           Sistema de comandas para uma cafeteria, feito com HTML, CSS e JS. 
+           Adicione itens ao pedido e veja o total. (Este é o projeto rodando ao vivo!)
+         </p>
+         <iframe 
+           src="projetos/comandas-cafe/index.html" 
+           width="100%" 
+           height="450" 
+           style="border: 1px solid #ddd; border-radius: 8px; margin-top: 15px; box-sizing: border-box;"
+           frameborder="0" 
+           scrolling="yes"
+           title="Projeto Comandas Cafeteria Embutido">
+           Seu navegador não suporta iframes.
+         </iframe>
+         <div class="project-techs">
+           <span>HTML</span>
+           <span>CSS</span>
+           <span>JavaScript</span>
+         </div>
+         <div class="project-links">
+           <a href="projetos/comandas-cafe/index.html" target="_blank" rel="noopener noreferrer" class="btn">Abrir em nova aba</a>
+           <a href="https://github.com/Jessedev01/comandas-cafe" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
+         </div>
+       </div>
+     </article>         <article class="project-card">
+       <div class="project-content">
+         <h3>
+           <span class="coffee-icon-small">🗃️</span>
+           Simulador de Terminal SQL
+         </h3>
+         <p>
+           Um terminal SQL "fake" que roda 100% no navegador. 
+           Ele interpreta comandos SELECT * FROM em um banco de dados JSON.
+         </p>
+         <iframe 
+           src="projetos/sql-simulador/index.html" 
+           width="100%" 
+           height="600" 
+           style="border: 1px solid #ddd; border-radius: 8px; margin-top: 15px; box-sizing: border-box;"
+           frameborder="0" 
+           scrolling="no"
+           title="Projeto Simulador SQL Embutido">
+           Seu navegador não suporta iframes.
+         </iframe>
+         <div class="project-techs">
+           <span>HTML</span>
+           <span>CSS</span>
+           <span>JavaScript</span>
+         </div>
+         <div class="project-links">
+           <a href="projetos/sql-simulador/index.html" target="_blank" rel="noopener noreferrer" class="btn">Abrir em nova aba</a>
+           <a href="https://github.com/Jessedev01/sql-simulador" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
+         </div>
+       </div>
+     </article>   </div> </section> ```
 
-  <section id="projetos" class="section animate-on-scroll">
-    <h2>Projetos</h2>
-    <div class="projects">
-      <!-- Projeto Café -->
-      <article class="project-card">
-  <div class="project-content">
-    <h3>
-      <span class="coffee-icon-small">☕</span>
-      Projeto Comandas Cafeteria
-    </h3>
-    <p>
-      Sistema de comandas para uma cafeteria, feito com HTML, CSS e JS. 
-      Adicione itens ao pedido e veja o total. (Este é o projeto rodando ao vivo!)
-    </p>
+---
 
-    <iframe 
-      src="projetos/comandas-cafe/index.html" 
-      width="100%" 
-      height="450" 
-      style="border: 1px solid #ddd; border-radius: 8px; margin-top: 15px; box-sizing: border-box;"
-      frameborder="0" 
-      scrolling="yes"
-      title="Projeto Comandas Cafeteria Embutido">
-      Seu navegador não suporta iframes.
-    </iframe>
-    
-    <div class="project-techs">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-    </div>
-    <div class="project-links">
-      <a href="projetos/comandas-cafe/index.html" target="_blank" rel="noopener noreferrer" class="btn">Abrir em nova aba</a>
-      
-      <a href="https://github.com/Jessedev01/comandas-cafe" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-  </div>
-</article>
-    </div>
- </div>
-      </article>
+### 2. 🗺️ Problema 2: A Causa Real do Erro "404"
 
-      <article class="project-card">
-        <div class="project-content">
-          <h3>
-            <span class="coffee-icon-small">🗃️</span>
-            Simulador de Terminal SQL
-          </h3>
-          <p>
-            Um terminal SQL "fake" que roda 100% no navegador. 
-            Ele interpreta comandos SELECT * FROM em um banco de dados JSON.
-          </p>
+Mesmo depois de corrigir o HTML acima, o erro 404 dentro do `iframe` do SQL **vai continuar**.
 
-          <iframe 
-            src="projetos/sql-simulador/index.html" 
-            width="100%" 
-            height="600" 
-            style="border: 1px solid #ddd; border-radius: 8px; margin-top: 15px; box-sizing: border-box;"
-            frameborder="0" 
-            scrolling="no"
-            title="Projeto Simulador SQL Embutido">
-            Seu navegador não suporta iframes.
-          </iframe>
-          
-          <div class="project-techs">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="projetos/simulador-sql/index.html" target="_blank" rel="noopener noreferrer" class="btn">Abrir em nova aba</a>
-            
-            <a href="https://github.com/Jessedev01/sql-simulador" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-          </div>
-        </div>
-      </article>
-      </div> </section>
-  </section>
+Como eu disse antes, o erro 404 não está neste código HTML. O erro 404 é o GitHub a dizer: "Eu não consigo encontrar o ficheiro em `projetos/sql-simulador/index.html`."
+
+Isto é 99% de certeza um problema de nome de pasta no seu repositório.
+
+Por favor, vá ao seu repositório no GitHub e verifique se a sua estrutura de pastas está **exatamente** assim (maiúsculas e minúsculas importam):
+  
 
   <section id="contato" class="section animate-on-scroll">
     <h2>Contato</h2>
@@ -202,6 +200,7 @@
   <script src="script-melhorado.js"></script>
 </body>
 </html>
+
 
 
 
