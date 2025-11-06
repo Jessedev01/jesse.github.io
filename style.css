@@ -280,9 +280,9 @@ nav {
     Resultado: Em ecrãs largos, ele cria 2 colunas. Em ecrãs 
     pequenos (menos de 1000px), ele cria 1 coluna automaticamente.
   */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   
-  gap: 20px; /* Um espaço de 20px entre os cards */
+  gap: 10px; /* Um espaço de 20px entre os cards */
 }
 
 .project-card {
@@ -538,4 +538,5 @@ nav {
     scroll-behavior: auto !important;
   }
 }
+
 
