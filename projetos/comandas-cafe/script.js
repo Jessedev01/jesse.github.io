@@ -26,9 +26,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- FUNÇÕES PRINCIPAIS ---
 
-  // (NOVA FUNÇÃO) Adiciona um item ao pedido atual (vinda do formulário)
+  // (Cole esta nova versão no lugar da antiga)
   function adicionarItem(e) {
     e.preventDefault(); // Impede o formulário de recarregar a página
+
+    // Pega os valores dos campos do formulário
+    const nome = itemNomeEl.value;
+    
+    // --- A MÁGICA ACONTECE AQUI ---
+    
+    // 1. Pega o valor em centavos como um número inteiro
+    // Ex: usuário digita "800"
+    const precoEmCentavos = parseInt(itemPrecoEl.value, 10);
+
+    // 2. Validação (checa se é um número e se é maior que zero)
+    if (!nome || isNaN(precoEmCentavos) || precoEmCentavos <= 0) {
+      alert('Por favor, insira um nome e um preço (em centavos) válidos.');
+      return;
+    }
+    
+    // 3. Converte centavos para reais (ex: 800 -> 8.00)
+    const precoEmReais = precoEmCentavos / 100.0;
+    
+    // --- FIM DA MUDANÇA ---
+
+    // Daqui para baixo, o código usa a variável "precoEmReais"
+    
+    // Adiciona ao array do pedido atual
+    pedidoAtualItens.push({ nome: nome, preco: precoEmReais });
+    
+    // Adiciona à lista visual
+    const novoItemLista = document.createElement('li');
+    novoItemLista.textContent = `${nome} - R$ ${precoEmReais.toFixed(2)}`;
+    listaPedidoEl.appendChild(novoItemLista);
+
+    // Atualiza o total
+    pedidoAtualTotal += precoEmReais;
+    totalDisplayEl.textContent = `R$ ${pedidoAtualTotal.toFixed(2)}`;
+
+    // Limpa o formulário e foca no primeiro campo
+    itemNomeEl.value = '';
+    itemPrecoEl.value = '';
+    itemNomeEl.focus(); 
+  }
 
     // Pega os valores dos campos do formulário
     const nome = itemNomeEl.value;
