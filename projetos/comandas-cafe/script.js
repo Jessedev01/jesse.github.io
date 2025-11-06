@@ -3,69 +3,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- SELETORES DOS ELEMENTOS ---
   
-  // Seletores do formulário de cadastro
   const formCadastroEl = document.getElementById('form-cadastro-item');
   const itemNomeEl = document.getElementById('item-nome');
   const itemPrecoEl = document.getElementById('item-preco');
   
-  // Seletores da Comanda
   const listaPedidoEl = document.getElementById('lista-pedido');
   const totalDisplayEl = document.getElementById('total-pedido');
   const botaoLimparEl = document.getElementById('reset-btn');
   const botaoFinalizarEl = document.getElementById('finalizar-btn');
   const formaPagamentoEl = document.getElementById('forma-pagamento');
   
-  // Seletores do Dashboard
   const faturamentoDiaEl = document.getElementById('faturamento-dia');
   const faturamentoMesEl = document.getElementById('faturamento-mes');
   const historicoPedidosEl = document.getElementById('historico-pedidos');
 
-  // --- VARIÁVEIS DO ESTADO ---
-  let pedidoAtualItens = []; // Guarda os itens do pedido {nome, preco}
+  // [NOVO] Seletores dos Canvas (quadros) dos gráficos
+  const ctxPizza = document.getElementById('grafico-pizza-pagamentos');
+  const ctxBarras = document.getElementById('grafico-barras-pagamentos');
+
+  // --- VARIÁVEIS DE ESTADO ---
+  let pedidoAtualItens = []; 
   let pedidoAtualTotal = 0;
+
+  // [NOVO] Variáveis para guardar as instâncias dos gráficos
+  let graficoPizza = null;
+  let graficoBarras = null;
 
   // --- FUNÇÕES PRINCIPAIS ---
 
-  // Adiciona um item ao pedido atual (lendo centavos)
   function adicionarItem(e) {
-    e.preventDefault(); // Impede o formulário de recarregar a página
-
-    // Pega os valores dos campos do formulário
+    e.preventDefault(); 
     const nome = itemNomeEl.value;
-    
-    // 1. Pega o valor em centavos como um número inteiro
     const precoEmCentavos = parseInt(itemPrecoEl.value, 10);
 
-    // 2. Validação (checa se é um número e se é maior que zero)
     if (!nome || isNaN(precoEmCentavos) || precoEmCentavos <= 0) {
       alert('Por favor, insira um nome e um preço (em centavos) válidos.\n\nExemplo: 800 (para R$ 8,00)');
       return;
     }
     
-    // 3. Converte centavos para reais (ex: 800 -> 8.00)
     const precoEmReais = precoEmCentavos / 100.0;
     
-    // --- FIM DA LÓGICA DE CENTAVOS ---
-
-    // Adiciona ao array do pedido atual
     pedidoAtualItens.push({ nome: nome, preco: precoEmReais });
     
-    // Adiciona à lista visual
     const novoItemLista = document.createElement('li');
     novoItemLista.textContent = `${nome} - R$ ${precoEmReais.toFixed(2)}`;
     listaPedidoEl.appendChild(novoItemLista);
 
-    // Atualiza o total
     pedidoAtualTotal += precoEmReais;
     totalDisplayEl.textContent = `R$ ${pedidoAtualTotal.toFixed(2)}`;
 
-    // Limpa o formulário e foca no primeiro campo
     itemNomeEl.value = '';
     itemPrecoEl.value = '';
     itemNomeEl.focus(); 
   }
 
-  // Limpa o pedido atual (visual e dados)
   function limparPedido() {
     pedidoAtualItens = [];
     pedidoAtualTotal = 0;
@@ -73,56 +64,50 @@ document.addEventListener('DOMContentLoaded', () => {
     totalDisplayEl.textContent = 'R$ 0,00';
   }
 
-  // Finaliza o pedido e salva no localStorage
   function finalizarPedido() {
     if (pedidoAtualTotal === 0) {
       alert('Seu carrinho está vazio!');
       return;
     }
 
-    // 1. Pega o histórico antigo do localStorage
     const historico = JSON.parse(localStorage.getItem('historicoPedidos')) || [];
 
-    // 2. Cria o novo objeto de pedido
     const novoPedido = {
-      id: new Date().getTime(), // ID único baseado no tempo
-      data: new Date().toISOString(), // Data em formato universal (string)
+      id: new Date().getTime(),
+      data: new Date().toISOString(),
       itens: pedidoAtualItens,
       total: pedidoAtualTotal,
-      pagamento: formaPagamentoEl.value // Pega o valor (dinheiro, pix, cartao)
+      pagamento: formaPagamentoEl.value
     };
 
-    // 3. Adiciona o novo pedido ao histórico
     historico.push(novoPedido);
-
-    // 4. Salva o histórico ATUALIZADO de volta no localStorage
     localStorage.setItem('historicoPedidos', JSON.stringify(historico));
 
-    // 5. Limpa o pedido atual
     limparPedido();
-
-    // 6. Atualiza o dashboard
-    atualizarDashboard();
-
+    atualizarDashboard(); // Esta função agora vai atualizar os gráficos
     alert('Pedido finalizado e salvo no histórico!');
   }
   
-  // --- FUNÇÕES DO DASHBOARD ---
+  // --- FUNÇÕES DO DASHBOARD (COM GRÁFICOS) ---
   
-  // Lê o localStorage e atualiza o painel
   function atualizarDashboard() {
     const historico = JSON.parse(localStorage.getItem('historicoPedidos')) || [];
     const hoje = new Date();
     
     let faturamentoDia = 0;
     let faturamentoMes = 0;
+    
+    // [NOVO] Objeto para contar os pagamentos
+    const contagemPagamentos = {
+      'dinheiro': 0,
+      'pix': 0,
+      'cartao': 0
+    };
 
-    // Limpa o histórico visual antigo
     historicoPedidosEl.innerHTML = '';
     
-    // Itera por todos os pedidos salvos (do mais novo para o mais velho)
     historico.slice().reverse().forEach(pedido => {
-      const dataPedido = new Date(pedido.data); // Converte a string de data de volta para Data
+      const dataPedido = new Date(pedido.data);
 
       // 1. Preenche o Histórico Visual
       const itemHistorico = document.createElement('li');
@@ -146,14 +131,97 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dataPedido.toDateString() === hoje.toDateString()) {
         faturamentoDia += pedido.total;
       }
+
+      // 4. [NOVO] Conta os tipos de pagamento
+      if (pedido.pagamento && contagemPagamentos.hasOwnProperty(pedido.pagamento)) {
+        contagemPagamentos[pedido.pagamento]++;
+      }
     });
 
-    // 4. Exibe os totais de faturamento
     faturamentoDiaEl.textContent = `R$ ${faturamentoDia.toFixed(2)}`;
     faturamentoMesEl.textContent = `R$ ${faturamentoMes.toFixed(2)}`;
+
+    // 5. [NOVO] Chama a função para desenhar os gráficos
+    desenharGraficos(contagemPagamentos);
   }
 
-  // --- INICIALIZAÇÃO E "OUVIDORES" DE EVENTOS ---
+  // [NOVA FUNÇÃO] Para criar/atualizar os gráficos
+  function desenharGraficos(dados) {
+    
+    // Dados e cores para os gráficos
+    const labels = ['Dinheiro', 'Pix', 'Cartão'];
+    const dataCounts = [dados.dinheiro, dados.pix, dados.cartao];
+    const backgroundColors = [
+      'rgba(255, 99, 132, 0.7)',
+      'rgba(54, 162, 235, 0.7)',
+      'rgba(255, 206, 86, 0.7)'
+    ];
+
+    // --- GRÁFICO DE PIZZA ---
+
+    // Destrói o gráfico antigo se ele existir (para não sobrepor)
+    if (graficoPizza) {
+      graficoPizza.destroy();
+    }
+    
+    graficoPizza = new Chart(ctxPizza, {
+      type: 'pie', // Tipo de gráfico
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Formas de Pagamento',
+          data: dataCounts,
+          backgroundColor: backgroundColors,
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }
+        }
+      }
+    });
+
+    // --- GRÁFICO DE BARRAS ---
+
+    // Destrói o gráfico antigo se ele existir
+    if (graficoBarras) {
+      graficoBarras.destroy();
+    }
+
+    graficoBarras = new Chart(ctxBarras, {
+      type: 'bar', // Tipo de gráfico
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Qtd. de Pedidos',
+          data: dataCounts,
+          backgroundColor: backgroundColors,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false // Não precisa de legenda, o eixo X já diz
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true, // Começa o eixo Y do zero
+            ticks: {
+              stepSize: 1 // Mostra apenas números inteiros (1, 2, 3...)
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // --- INICIALIZAÇÃO ---
 
   // Ouve o "submit" do formulário
   formCadastroEl.addEventListener('submit', adicionarItem);
@@ -162,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   botaoLimparEl.addEventListener('click', limparPedido);
   botaoFinalizarEl.addEventListener('click', finalizarPedido);
 
-  // Carrega o dashboard assim que a página abre
+  // Carrega o dashboard e os gráficos assim que a página abre
   atualizarDashboard();
 
 });
