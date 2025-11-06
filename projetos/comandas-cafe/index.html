@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comanda de Cafeteria</title>
   <link rel="stylesheet" href="style.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -50,14 +52,27 @@
     </div> <div class="dashboard">
       <h2>Painel de Controle (Simulado)</h2>
       
-      <div class="faturamento-box">
-        <h3>Faturamento do Dia</h3>
-        <p id="faturamento-dia">R$ 0,00</p>
+      <div class="faturamento-container">
+        <div class="faturamento-box">
+          <h3>Faturamento do Dia</h3>
+          <p id="faturamento-dia">R$ 0,00</p>
+        </div>
+        
+        <div class="faturamento-box">
+          <h3>Faturamento do Mês</h3>
+          <p id="faturamento-mes">R$ 0,00</p>
+        </div>
       </div>
-      
-      <div class="faturamento-box">
-        <h3>Faturamento do Mês</h3>
-        <p id="faturamento-mes">R$ 0,00</p>
+
+      <div class="graficos-container">
+        <div class="chart-box">
+          <h3>Pagamentos (Pizza)</h3>
+          <canvas id="grafico-pizza-pagamentos"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Pagamentos (Barras)</h3>
+          <canvas id="grafico-barras-pagamentos"></canvas>
+        </div>
       </div>
       
       <h3>Histórico de Pedidos</h3>
